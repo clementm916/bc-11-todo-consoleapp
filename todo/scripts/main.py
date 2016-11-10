@@ -234,7 +234,7 @@ class Todo(object):
 
 		print(Fore.YELLOW + "List all items within a todo :",end=" ")
 		print(Fore.CYAN + "\n\tlist",end=" ")
-		print(Fore.BLUE + "item ",end=" ")
+		print(Fore.BLUE + "items ",end=" ")
 		print(Fore.BLUE + "<todo-name or todo-id>")
 
 
