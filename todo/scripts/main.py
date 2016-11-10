@@ -74,15 +74,18 @@ class Todo(object):
 	def list():
 
 		todos=myDb.fetch_lists()
-
-		items = range(len(todos)*5)
+		if len(todos)<5:
+			ll= len(todos)*5
+		else:
+			ll =len(n)
+		items = range(ll)
 		i= 0
 		l= len(items)
 
 		# Initial call to print 0% progress
 		printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 		for item in items:
-			time.sleep(0.4)
+			time.sleep(0.1)
 			# Update Progress Bar
 			i += 1
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
@@ -125,14 +128,18 @@ class Todo(object):
 			playSpinner()
 			print(Fore.RED+ "Given todo has no Items")
 		else:
-			items = range(len(it)*5)
+			if len(it)<5:
+				ll =len(it) * 5
+			else:
+				ll = it
+			items = range(ll)
 			i= 0
 			l= len(items)
 
 			# Initial call to print 0% progress
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 			for item in items:
-				time.sleep(0.4)
+				time.sleep(0.1)
 				# Update Progress Bar
 				i += 1
 				printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
