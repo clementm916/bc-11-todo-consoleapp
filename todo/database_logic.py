@@ -132,6 +132,10 @@ class MyTodo(object):
 
 
 	def ffb_todos(self):
+		"""
+		Returns all todos in the database
+
+		"""
 		self.cursor.execute("SELECT id, created_at,todo_name from todoinfo")
 		all_rows ={}
 		
@@ -143,6 +147,10 @@ class MyTodo(object):
 			all_rows[row[0]]=myrow
 			return all_rows
 	def ffb_items(self):
+		"""
+		Returns all items in the database
+
+		"""
 		self.cursor.execute("SELECT id, added_at,item,todo_id from iteminfo")
 		all_rows={}
 		for row in self.cursor:
@@ -155,6 +163,10 @@ class MyTodo(object):
 
 
 	def ffb_data(self):
+		"""
+		Returns a merge of all todos and items
+		
+		"""
 
 		items = self.ffb_items()
 		todos = self.ffb_todos()
