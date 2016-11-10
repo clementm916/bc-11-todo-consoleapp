@@ -5,7 +5,7 @@ from collections import OrderedDict
 class MyTodo(object):
 	
 	def __init__(self):
-		self.db = sqlite3.connect("data/todos.db")
+		self.db = sqlite3.connect("todos.db")
 		self.cursor = self.db.cursor()
 		self.cursor.execute("CREATE TABLE IF NOT EXISTS todoinfo(id INTEGER PRIMARY KEY AUTOINCREMENT,created_at TEXT,todo_name STRING UNIQUE)")
 		self.cursor.execute("CREATE TABLE IF NOT EXISTS iteminfo(id INTEGER PRIMARY KEY AUTOINCREMENT,added_at TEXT, item STRING,todo_id INTEGER,FOREIGN KEY(todo_id)REFERENCES todoinfo(id))")
@@ -107,6 +107,6 @@ class MyTodo(object):
 
 
 sample = MyTodo()
-
+sample.add_todo("Today")
 print sample.ffb_todos()
 
