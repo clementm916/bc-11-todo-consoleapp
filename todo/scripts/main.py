@@ -75,9 +75,6 @@ class Todo(object):
 
 		todos=myDb.fetch_lists()
 
-		from time import sleep
-
-		# make a list
 		items = range(len(todos)*5)
 		i= 0
 		l= len(items)
@@ -85,7 +82,7 @@ class Todo(object):
 		# Initial call to print 0% progress
 		printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 		for item in items:
-			sleep(0.4)
+			time.sleep(0.4)
 			# Update Progress Bar
 			i += 1
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
@@ -130,12 +127,12 @@ class Todo(object):
 		else:
 			items = range(len(it)*5)
 			i= 0
-			l= len(it)
+			l= len(items)
 
 			# Initial call to print 0% progress
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 			for item in items:
-				sleep(0.4)
+				time.sleep(0.4)
 				# Update Progress Bar
 				i += 1
 				printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
