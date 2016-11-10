@@ -22,6 +22,7 @@ setup(
         items=todo.scripts.main:Todo.items
         item=todo.scripts.main:Todo.item
         add=todo.scripts.main:Todo.add
+        sync=todo.scripts.main:Todo.sync
         cli=todo.scripts.main:Todo.cli
         start_todo = todo.scripts.main:Todo.run_app
 

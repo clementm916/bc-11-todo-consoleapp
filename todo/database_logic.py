@@ -98,15 +98,34 @@ class MyTodo(object):
 			myrow={}
 			myrow['created_at']=row[1]
 			myrow['todo']= row[2]
-			myrow['items']={}
+			myrow['items']=[]
 			all_rows[row[0]]=myrow
 			return all_rows
 	def ffb_items(self):
-		self.cursor.execute("SELECT id, added_at,item from iteminfo")
-		all_rows =[]
+		self.cursor.execute("SELECT id, added_at,item,todo_id from iteminfo")
+		all_rows={}
+		for row in self.cursor:
+			myrow={}
+			myrow['added_at']=row[1]
+			myrow['item']= row[2]
+			myrow['todo']= row[3]
+			all_rows[row[0]]=myrow
+		return all_rows
 
 
-sample = MyTodo()
-sample.add_todo("Today")
-print sample.ffb_todos()
+	def ffb_data(self):
+
+		items = self.ffb_items()
+		todos = self.ffb_todos()
+
+		for item in items:
+			todo_id = items[item]['todo']
+			todos[todo_id]['items'].append(items[item])
+		return todos
+
+
+
+
+
+
 

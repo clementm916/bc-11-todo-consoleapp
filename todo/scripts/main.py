@@ -14,6 +14,7 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
 from database_logic import MyTodo
+from fire_base import synchronize
 
 from progress_bar import printProgress,playSpinner,spinningCursor
 from colorama import init,Fore, Back, Style
@@ -91,6 +92,11 @@ class Todo(object):
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 
 		print(tabulate(todos, headers='keys', tablefmt="fancy_grid"))
+	@todo.command()
+	def sync():
+		data = myDb.ffb_data()
+		synchronize(data)
+
 		
 
 	@click.group()
