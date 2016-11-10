@@ -147,7 +147,7 @@ class Todo(object):
 		if not is_open == "True":
 			print(Fore.RED + "\t\tNo open todo to add your items")    
 		else:
-			print ("Adding "+ item_toadd, end ="")
+			print ("Adding "+ item_toadd)
 			playSpinner()
 			myDb.add_item(item_toadd,todo)
 
@@ -164,7 +164,7 @@ class Todo(object):
 		"""
 		pass
 	    
-	@mylist.command(help="lists items in a todo list")
+	@mylist.command(help="returns items in a todo list")
 	@click.argument('todo_name',nargs =1)
 	def items(todo_name):
 		"""

@@ -88,7 +88,8 @@ class MyTodo(object):
 			myrow=OrderedDict()
 			myrow['id']=row[0]
 			myrow['created_at']=row[1]
-			myrow['todo']= row[2]
+			myrow['item']= row[2]
+
 			all_rows.append(myrow)
 		if all_rows==[]:
 			return -1
@@ -141,11 +142,12 @@ class MyTodo(object):
 		
 		for row in self.cursor:
 			myrow={}
+			myrow['id'] = row[0]
 			myrow['created_at']=row[1]
 			myrow['todo']= row[2]
 			myrow['items']=[]
 			all_rows[row[0]]=myrow
-			return all_rows
+		return all_rows
 	def ffb_items(self):
 		"""
 		Returns all items in the database
@@ -155,6 +157,7 @@ class MyTodo(object):
 		all_rows={}
 		for row in self.cursor:
 			myrow={}
+			myrow['id'] = row[0]
 			myrow['added_at']=row[1]
 			myrow['item']= row[2]
 			myrow['todo']= row[3]
