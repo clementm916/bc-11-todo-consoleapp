@@ -4,6 +4,7 @@ from tabulate import tabulate
 from pyfiglet import Figlet
 from inspect import getsourcefile
 from . string_to_list import stringToList
+from . progress_bar import printProgress,playSpinner,spinningCursor
 import os.path
 import sys
 
@@ -15,7 +16,7 @@ sys.path.insert(0, parent_dir)
 from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
 from database_logic import MyTodo
 
-from progress_bar import printProgress,playSpinner,spinningCursor
+
 from colorama import init,Fore, Back, Style
 init(autoreset=True)
 
