@@ -4,7 +4,6 @@ from tabulate import tabulate
 from pyfiglet import Figlet
 from inspect import getsourcefile
 from . string_to_list import stringToList
-from . progress_bar import printProgress,playSpinner,spinningCursor
 import os.path
 import sys
 
@@ -15,22 +14,35 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
 from database_logic import MyTodo
+from fire_base import synchronize
 
-
+from . progress_bar import printProgress,playSpinner,spinningCursor
 from colorama import init,Fore, Back, Style
 init(autoreset=True)
 
+#db object for use
 myDb = MyTodo()
 
 
 class Todo(object):
 	@click.group()
 	def todo():
+		"""
+		Defining the group command "todo"
+
+		"""
 		pass
 
 	@todo.command(help="Creates a todo list")
 	@click.argument('todo_name',nargs =1)
 	def create(todo_name):
+		"""
+		Defining create command which takes a todo_name and creates the repctive todo
+
+		@params 
+		todo_name -> nmae of the todo to be created
+
+		"""
 		creating = myDb.add_todo(todo_name)
 		playSpinner()
 		if creating == -1:
@@ -43,6 +55,13 @@ class Todo(object):
 	@todo.command(help ="Opens a todo list")
 	@click.argument('to-read',default=None)
 	def open(to_read):
+		"""
+		Defining open command which opens a file for reading
+
+		@params
+		to_read -> the list to be read
+
+		"""
 		try:
 			to_read = int(to_read)
 		except (ValueError):
@@ -73,6 +92,10 @@ class Todo(object):
 			print(Fore.RED + "\t\tFailed!! Requested Todo Not in Database")
 	@todo.command(help="Lists todo lists\n")
 	def list():
+		"""
+		command that returns all the lists in the database
+
+		"""
 
 		todos=myDb.fetch_lists()
 		if len(todos)<5:
@@ -92,15 +115,31 @@ class Todo(object):
 			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
 
 		print(tabulate(todos, headers='keys', tablefmt="fancy_grid"))
-		
+	
+	@todo.command(help ="Synchronize data to firebase")	
+	def sync():
+		"""
+		Definign command to sync to a remote database 
+
+		"""
+		data = myDb.ffb_data() 
+		synchronize(data)
 
 	@click.group()
 	def item(help="Item group command"):
+		"""
+		defining item group command 
+		"""
 		pass
 
 	@item.command(help ="Add an item to a list")
 	@click.argument('item_toadd')
 	def add(item_toadd):
+		"""
+		Adds an item to an open list.
+		@params
+			item_toadd -> item to be added to a list
+		"""
 		is_open = readStatus()
 		playSpinner()
 		todo =readLastOpen()
@@ -118,11 +157,23 @@ class Todo(object):
 
 	@click.group(help ="list command group")
 	def mylist():
+		"""
+		list command group
+
+		"""
 		pass
 	    
 	@mylist.command(help="lists items in a todo list")
 	@click.argument('todo_name',nargs =1)
 	def items(todo_name):
+		"""
+
+		Returns the items in a todo list
+
+		@params
+		  todo_name -> name of the todo list to display it's items
+
+		"""
 		
 		it = myDb.fetch_list(todo_name)
 		if it == -1:
@@ -147,6 +198,11 @@ class Todo(object):
 			print(tabulate(it, headers='keys', tablefmt="fancy_grid"))
 	@click.command()
 	def run_app():
+		"""
+
+		sets up the application and gives a user guide
+
+		"""
 		print("Starting app ....",end="")
 		playSpinner()
 		writeStatus("None")
