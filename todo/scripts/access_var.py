@@ -22,3 +22,4 @@ def writeLastOpen(last):
 	my_file = open('temp/read.txt', "w")
 	my_file.write(last) 
 	my_file.close()
+

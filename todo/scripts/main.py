@@ -1,4 +1,5 @@
 import click
+import time
 from tabulate import tabulate
 from pyfiglet import Figlet
 from inspect import getsourcefile
@@ -13,6 +14,8 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
 from database_logic import MyTodo
+
+from progress_bar import printProgress,spinningCursor
 from colorama import init,Fore, Back, Style
 init(autoreset=True)
 
@@ -60,8 +63,24 @@ class Todo(object):
 			print(Fore.RED + "\t\tFailed!!\b\b\b\bRequested Todo Not in Database")
 	@todo.command(help="Lists todo lists\n")
 	def list():
-		print(Fore.GREEN+"Listing to do lists")
+
 		todos=myDb.fetch_lists()
+
+		from time import sleep
+
+		# make a list
+		items = range(len(todos)*5)
+		i= 0
+		l= len(items)
+
+		# Initial call to print 0% progress
+		printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
+		for item in items:
+			sleep(0.4)
+			# Update Progress Bar
+			i += 1
+			printProgress(i, l, prefix = 'Fetching:', suffix = 'Complete', barLength = 50)
+
 		print(tabulate(todos, headers='keys', tablefmt="fancy_grid"))
 		
 
@@ -77,7 +96,13 @@ class Todo(object):
 		if not is_open == "True":
 			print("No open todo to add your items")    
 		else:
-			print ("Adding "+ item_toadd)
+			print ("Adding "+ item_toadd, end ="")
+			spinner = spinningCursor()
+			for _ in range(50):
+			    sys.stdout.write(next(spinner))
+			    sys.stdout.flush()
+			    time.sleep(0.1)
+			    sys.stdout.write('\b')
 			myDb.add_item(item_toadd,todo)
 
 	@item.command(help = "List items ")
