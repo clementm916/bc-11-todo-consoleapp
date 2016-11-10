@@ -77,7 +77,10 @@ class MyTodo(object):
 			myrow['created_at']=row[1]
 			myrow['todo']= row[2]
 			all_rows.append(myrow)
-		return all_rows
+		if all_rows==[]:
+			return -1
+		else:
+			return all_rows
 
 	def fetch_lists(self):
 		self.cursor.execute("SELECT id, created_at,todo_name from todoinfo")

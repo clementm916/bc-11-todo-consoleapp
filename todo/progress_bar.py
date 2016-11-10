@@ -1,6 +1,7 @@
 
 # -*- coding: utf-8 -*-
 import sys
+import time
 from colorama import init,Fore, Back, Style
 init(autoreset=True)
 
@@ -30,3 +31,11 @@ def spinningCursor():
         for cursor in '|/-\\':
             yield cursor
 
+
+def playSpinner():
+    spinner = spinningCursor()
+    for _ in range(16):
+        sys.stdout.write(next(spinner))
+        sys.stdout.flush()
+        time.sleep(0.1)
+        sys.stdout.write('\b')
