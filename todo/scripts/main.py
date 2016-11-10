@@ -1,7 +1,6 @@
 import click
 from tabulate import tabulate
 from pyfiglet import Figlet
-
 from inspect import getsourcefile
 from . string_to_list import stringToList
 import os.path
