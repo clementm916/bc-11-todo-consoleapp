@@ -21,7 +21,7 @@ Todo was developed with Python version `3.5`  therefore may not work properly on
 ```sh
 $ start_todo #this is the first command you should run in the application 
 Starting app ....                        
-                        
+  #compressed branding display                    
 The following are the avaibale app commands for use :
 Creating a list of Todo items : 
   todo  create <name-of-the-todo-list>
@@ -47,7 +47,7 @@ Usage: items [OPTIONS] TODO_NAME
 Options:
   --help  Show this message and exit.
 ```
-### `start_todo` option
+### `start_todo` command
 First command you should run on installing the applicaton.Sets up the application and  provides with you with a summary of the available commands.
 ```sh
 $ start_todo
