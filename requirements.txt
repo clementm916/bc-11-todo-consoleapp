@@ -1,0 +1,8 @@
+click==6.6
+colorama==0.3.7
+pyfiglet==0.7.5
+python-firebase==1.2
+requests==2.11.1
+tabulate==0.7.7
+-e git+https://github.com/clementm916/bc-11-todo-consoleapp@6165ed1555d969f9bc429a7a172f647e048da459#egg=todo
+-e git+https://github.com/clementm916/bc-11-todo-consoleapp@6165ed1555d969f9bc429a7a172f647e048da459#egg=todopackage
