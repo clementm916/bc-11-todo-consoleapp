@@ -1,4 +1,4 @@
-# Todo App
+# Todo App (Nitafanya)
 Todo is a console application that lets a user to create a todo list and add items to the list. The user is able to view a list of their todos as well as a list of of the items in a given todo.
 
 
