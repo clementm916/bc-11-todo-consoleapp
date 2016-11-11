@@ -36,7 +36,7 @@ List all items within a todo :
 ```
 
 # Functionality
-### `--help` 
+### `--help` option
 This is to help the user whenever they have trouble using a given command:
 ```sh
 $ items --help
@@ -47,8 +47,26 @@ Usage: items [OPTIONS] TODO_NAME
 Options:
   --help  Show this message and exit.
 ```
+### `start_todo` option
+First command you should run on installing the applicaton.Sets up the application and  provides with you with a summary of the available commands.
+```sh
+$ start_todo
+Starting app ....                        
+                        
+#compressed branding display
+                                                     
+The following are the avaibale app commands for use :
+Creating a list of Todo items : 
+	todo  create <name-of-the-todo-list>
+Adding an Item to a list : 
+	todo open <name-of-the-todo-list> <or [Index of the todo-list]>
+	item add <name-of-the-item> 
+List all todos : 
+	todo list 
+List all items within a todo : 
+	list items  <todo-name or todo-id>
 
-
+```
 
 ### `todo` command
 This is a base command with several sub-commands
