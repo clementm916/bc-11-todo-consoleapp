@@ -1,5 +1,5 @@
 # Todo App (Nitafanya)
-Todo is a console application that lets a user to create a todo list and add items to the list. The user is able to view a list of their todos as well as a list of of the items in a given todo.
+Todo is a console application that lets a user to create a todo list and add items to the list.A todo is a list of things the user wants to do and an item is an activity in the todo list. The user is able to view a list of their todos as well as a list of of the items in a given todo. Using this app a user should be able to add "todo lists" and add items to them. They should also be able to view what they have added.
 
 
 # Installation
@@ -37,7 +37,7 @@ List all items within a todo :
 
 # Functionality
 ### `--help` 
-A user can find the built-in functionality of the application can be found using the `--help` option for any command:
+This is to help the user whenever they have trouble using a given command:
 ```sh
 $ items --help
 Usage: items [OPTIONS] TODO_NAME
