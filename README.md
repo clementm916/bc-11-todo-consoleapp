@@ -8,12 +8,28 @@ Todo app is a python package and can be installed as such. First setup a virtual
 $ pip install virtualenv          #install virtualenv module
 $ virtualenv to-do                #setup your own virtual env
 $ source to-do/bin/activate #to activate environment in linux, in windows run to-do/scripts/activate
+$pip install -r requirements.txt #you can run this to pre-install requirements this is however optional since insalling the                                                     app(the next step) will also install the requirents
 ```
 To install the app, clone this repository: 
 ```sh
 $ git clone https://github.com/clementm916/bc-11-todo-consoleapp
 $ cd bc-11-todo-consoleapp
-$ pip install -editable .           #this installs the app and all required modules
+$ $ pip install --editable .
+Obtaining file:///home/user/Location/bc-11-todo-consoleapp/bc-11-todo-consoleapp
+Requirement already satisfied: Click in ./env/lib/python3.5/site-packages (from todo==1.0)
+Requirement already satisfied: requests in ./env/lib/python3.5/site-packages (from todo==1.0)
+Requirement already satisfied: python-firebase in ./env/lib/python3.5/site-packages (from todo==1.0)
+Requirement already satisfied: tabulate in ./env/lib/python3.5/site-packages (from todo==1.0)
+Requirement already satisfied: colorama in ./env/lib/python3.5/site-packages (from todo==1.0)
+Requirement already satisfied: pyfiglet in ./env/lib/python3.5/site-packages (from todo==1.0)
+Installing collected packages: todo
+  Found existing installation: todo 1.0
+    Uninstalling todo-1.0:
+      Successfully uninstalled todo-1.0
+  Running setup.py develop for todo
+Successfully installed todo
+       
+#this installs the app and all required modules
 ```
 
 # Setting Up
