@@ -3,22 +3,21 @@ import time
 from tabulate import tabulate
 from pyfiglet import Figlet
 from inspect import getsourcefile
-from . string_to_list import stringToList
-import os.path
-import sys
-
-current_path = os.path.abspath(getsourcefile(lambda:0))
-current_dir = os.path.dirname(current_path)
-parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
-
-sys.path.insert(0, parent_dir)
-from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
-from database_logic import MyTodo
-from fire_base import synchronize
-
-from . progress_bar import printProgress,playSpinner,spinningCursor
 from colorama import init,Fore, Back, Style
 init(autoreset=True)
+
+import sys
+
+"""
+Own written imports
+"""
+
+from .access_var import readStatus,writeStatus,writeLastOpen,readLastOpen
+from todo.database_logic import MyTodo
+from todo.fire_base import synchronize
+from . string_to_list import stringToList
+from . progress_bar import printProgress,playSpinner,spinningCursor
+
 
 #db object for use
 myDb = MyTodo()
@@ -123,8 +122,11 @@ class Todo(object):
 		command to sync to a remote database 
 
 		"""
+		playSpinner
+		print("Sychronizing to firebase")
 		data = myDb.ffb_data() 
 		synchronize(data)
+		playSpinner
 
 	@click.group()
 	def item(help="Item group command"):
