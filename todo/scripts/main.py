@@ -100,7 +100,7 @@ class Todo(object):
 		if len(todos)<5:
 			ll= len(todos)*5
 		else:
-			ll =len(n)
+			ll =len(todos)
 		items = range(ll)
 		i= 0
 		l= len(items)
